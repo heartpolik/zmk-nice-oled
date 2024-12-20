@@ -132,7 +132,8 @@ void draw_animation(lv_obj_t *canvas, struct zmk_widget_screen *widget) {
     }
 #endif // CONFIG_NICE_OLED_POKEMON_ANIMATION
 }
-#if IS_ENABLED(CONFIG_NICE_OLED_VIM)
+#if IS_ENABLED(CONFIG_NICE_OLED_VIM) || IS_ENABLED(CONFIG_NICE_OLED_POKEMON_ANIMATION) ||          \
+    IS_ENABLED(CONFIG_NICE_OLED_GEM_ANIMATION)
 if (art) {
     lv_obj_align(art, LV_ALIGN_TOP_LEFT, 0, 0);
 }
