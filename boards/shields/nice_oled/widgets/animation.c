@@ -122,6 +122,7 @@ void draw_animation(lv_obj_t *canvas, struct zmk_widget_screen *widget) {
 #endif
 
   // Alineación de las imágenes
+#if IS_ENABLED(CONFIG_NICE_OLED_ANIMATION)
   if (art) {
     // lv_obj_align(art, LV_ALIGN_TOP_LEFT, x coordinate, y coordinate);
 #if IS_ENABLED(CONFIG_NICE_OLED_GEM_ANIMATION)
@@ -140,4 +141,5 @@ void draw_animation(lv_obj_t *canvas, struct zmk_widget_screen *widget) {
     // lv_obj_align(art2, LV_ALIGN_TOP_LEFT, 36, 50); // Ajusta la posición de
     // la segunda imagen
   }
+#endif
 }

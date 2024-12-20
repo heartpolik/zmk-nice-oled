@@ -37,8 +37,12 @@ config NICE_OLED_GEM_ANIMATION_WPM_FIXED_RANGE_MAX
     int "Fixed range maximum for WPM gauge/chart"
     default 100
 
-config NICE_OLED_GEM_ANIMATION
+config NICE_OLED_ANIMATION
     bool "Enable animation on peripheral"
+    default y
+
+config NICE_OLED_GEM_ANIMATION
+    bool "Enable gem animation"
     default y
 
 config NICE_OLED_GEM_ANIMATION_MS
