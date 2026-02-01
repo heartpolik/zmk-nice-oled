@@ -23,11 +23,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_PROFILE_A
 };
 
 const lv_img_dsc_t profile_active = {
+    .header.magic = LV_IMAGE_HEADER_MAGIC,
     .header.cf = LV_COLOR_FORMAT_RGB888,
-    .header.always_zero = 0,
-    .header.reserved = 0,
+    .header.flags = 0,
     .header.w = 12,
     .header.h = 12,
+    .header.stride = 12 * 3,
+    .header.reserved = 0,
     .data_size = 32,
     .data = profile_active_map,
 };
