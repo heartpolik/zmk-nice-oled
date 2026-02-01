@@ -68,7 +68,7 @@ const lv_img_dsc_t crystal_01 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_01_map,
 };
@@ -137,7 +137,7 @@ const lv_img_dsc_t crystal_02 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_02_map,
 };
@@ -206,7 +206,7 @@ const lv_img_dsc_t crystal_03 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_03_map,
 };
@@ -275,7 +275,7 @@ const lv_img_dsc_t crystal_04 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_04_map,
 };
@@ -344,7 +344,7 @@ const lv_img_dsc_t crystal_05 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_05_map,
 };
@@ -413,7 +413,7 @@ const lv_img_dsc_t crystal_06 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_06_map,
 };
@@ -482,7 +482,7 @@ const lv_img_dsc_t crystal_07 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_07_map,
 };
@@ -551,7 +551,7 @@ const lv_img_dsc_t crystal_08 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_08_map,
 };
@@ -620,7 +620,7 @@ const lv_img_dsc_t crystal_09 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_09_map,
 };
@@ -689,7 +689,7 @@ const lv_img_dsc_t crystal_10 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_10_map,
 };
@@ -758,7 +758,7 @@ const lv_img_dsc_t crystal_11 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_11_map,
 };
@@ -827,7 +827,7 @@ const lv_img_dsc_t crystal_12 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_12_map,
 };
@@ -896,7 +896,7 @@ const lv_img_dsc_t crystal_13 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_13_map,
 };
@@ -965,7 +965,7 @@ const lv_img_dsc_t crystal_14 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_14_map,
 };
@@ -1034,7 +1034,7 @@ const lv_img_dsc_t crystal_15 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_15_map,
 };
@@ -1103,7 +1103,7 @@ const lv_img_dsc_t crystal_16 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_16_map,
 };

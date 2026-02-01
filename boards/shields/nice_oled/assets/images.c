@@ -27,7 +27,7 @@ const lv_img_dsc_t bolt = {
     .header.w = 5,
     .header.h = 9,
     .header.stride = 5 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 17,
     .data = bolt_map,
 };
@@ -68,7 +68,7 @@ const lv_img_dsc_t bt = {
     .header.w = 12,
     .header.h = 15,
     .header.stride = 12 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 38,
     .data = bt_map,
 };
@@ -108,7 +108,7 @@ const lv_img_dsc_t bt_no_signal = {
     .header.w = 12,
     .header.h = 15,
     .header.stride = 12 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 38,
     .data = bt_no_signal_map,
 };
@@ -153,7 +153,7 @@ const lv_img_dsc_t bt_unbonded = {
     .header.w = 22,
     .header.h = 15,
     .header.stride = 22 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 53,
     .data = bt_unbonded_map,
 };
@@ -192,7 +192,7 @@ const lv_img_dsc_t usb = {
     .header.w = 20,
     .header.h = 11,
     .header.stride = 20 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 41,
     .data = usb_map,
 };
@@ -223,7 +223,7 @@ const lv_img_dsc_t gauge = {
     .header.w = 33,
     .header.h = 10,
     .header.stride = 33 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 58,
     .data = gauge_map,
 };
@@ -269,7 +269,7 @@ const lv_img_dsc_t grid = {
     .header.w = 67,
     .header.h = 33,
     .header.stride = 67 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 305,
     .data = grid_map,
 };
@@ -298,7 +298,7 @@ const lv_img_dsc_t profiles = {
     .header.w = 31,
     .header.h = 3,
     .header.stride = 31 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 20,
     .data = profiles_map,
 };

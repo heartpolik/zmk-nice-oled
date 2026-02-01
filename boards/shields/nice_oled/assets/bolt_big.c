@@ -27,7 +27,7 @@ const lv_img_dsc_t bolt = {
     .header.w = 8,
     .header.h = 11,
     .header.stride = 8 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 19,
     .data = bolt_map,
 };

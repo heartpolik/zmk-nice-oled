@@ -264,7 +264,7 @@ const lv_img_dsc_t vim_32x100 = {
     .header.w = 100,
     .header.h = 32,
     .header.stride = 100 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 424,
   .data = vim_32x100_map,
 };
@@ -277,7 +277,7 @@ const lv_img_dsc_t vim_32x128 = {
     .header.w = 128,
     .header.h = 32,
     .header.stride = 128 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 520,
   .data = vim_32x128_map,
 };
@@ -290,7 +290,7 @@ const lv_img_dsc_t vim_68x160 = {
     .header.w = 160,
     .header.h = 68,
     .header.stride = 160 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 1368,
   .data = vim_68x160_map,
 };
@@ -303,7 +303,7 @@ const lv_img_dsc_t vim_68x69 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = vim_68x69_map,
 };
@@ -315,7 +315,7 @@ const lv_img_dsc_t vim = {
     .header.w = 160,
     .header.h = 68,
     .header.stride = 160 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 1368,
   .data = vim_68x160_map,
 };

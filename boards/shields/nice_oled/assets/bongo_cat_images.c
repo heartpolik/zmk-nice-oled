@@ -524,7 +524,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_01 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_01_map,
 };
@@ -537,7 +537,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_02 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_02_map,
 };
@@ -550,7 +550,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_03 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_03_map,
 };
@@ -563,7 +563,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_04 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_04_map,
 };
@@ -576,7 +576,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_05 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_05_map,
 };
@@ -589,7 +589,7 @@ const lv_img_dsc_t bongo_cat_double_tap1_06 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap1_06_map,
 };
@@ -602,7 +602,7 @@ const lv_img_dsc_t bongo_cat_double_tap2_01 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap2_01_map,
 };
@@ -615,7 +615,7 @@ const lv_img_dsc_t bongo_cat_double_tap2_02 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap2_02_map,
 };
@@ -628,7 +628,7 @@ const lv_img_dsc_t bongo_cat_double_tap2_03 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_double_tap2_03_map,
 };
@@ -641,7 +641,7 @@ const lv_img_dsc_t bongo_cat_tap1_01 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap1_01_map,
 };
@@ -654,7 +654,7 @@ const lv_img_dsc_t bongo_cat_tap1_02 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap1_02_map,
 };
@@ -667,7 +667,7 @@ const lv_img_dsc_t bongo_cat_tap1_03 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap1_03_map,
 };
@@ -680,7 +680,7 @@ const lv_img_dsc_t bongo_cat_tap1_04 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap1_04_map,
 };
@@ -693,7 +693,7 @@ const lv_img_dsc_t bongo_cat_tap2_01 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap2_01_map,
 };
@@ -706,7 +706,7 @@ const lv_img_dsc_t bongo_cat_tap2_02 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap2_02_map,
 };
@@ -719,7 +719,7 @@ const lv_img_dsc_t bongo_cat_tap2_03 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap2_03_map,
 };
@@ -732,7 +732,7 @@ const lv_img_dsc_t bongo_cat_tap2_04 = {
     .header.w = 26,
     .header.h = 50,
     .header.stride = 26 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 208,
   .data = bongo_cat_tap2_04_map,
 };

@@ -1134,7 +1134,7 @@ const lv_img_dsc_t spaceman_00 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_00_map,
 };
@@ -1147,7 +1147,7 @@ const lv_img_dsc_t spaceman_01 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_01_map,
 };
@@ -1160,7 +1160,7 @@ const lv_img_dsc_t spaceman_02 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_02_map,
 };
@@ -1173,7 +1173,7 @@ const lv_img_dsc_t spaceman_03 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_03_map,
 };
@@ -1186,7 +1186,7 @@ const lv_img_dsc_t spaceman_04 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_04_map,
 };
@@ -1199,7 +1199,7 @@ const lv_img_dsc_t spaceman_05 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_05_map,
 };
@@ -1212,7 +1212,7 @@ const lv_img_dsc_t spaceman_06 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_06_map,
 };
@@ -1225,7 +1225,7 @@ const lv_img_dsc_t spaceman_07 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_07_map,
 };
@@ -1238,7 +1238,7 @@ const lv_img_dsc_t spaceman_08 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_08_map,
 };
@@ -1251,7 +1251,7 @@ const lv_img_dsc_t spaceman_09 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_09_map,
 };
@@ -1264,7 +1264,7 @@ const lv_img_dsc_t spaceman_10 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_10_map,
 };
@@ -1277,7 +1277,7 @@ const lv_img_dsc_t spaceman_11 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_11_map,
 };
@@ -1290,7 +1290,7 @@ const lv_img_dsc_t spaceman_12 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_12_map,
 };
@@ -1303,7 +1303,7 @@ const lv_img_dsc_t spaceman_13 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_13_map,
 };
@@ -1316,7 +1316,7 @@ const lv_img_dsc_t spaceman_14 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_14_map,
 };
@@ -1329,7 +1329,7 @@ const lv_img_dsc_t spaceman_15 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_15_map,
 };
@@ -1342,7 +1342,7 @@ const lv_img_dsc_t spaceman_16 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_16_map,
 };
@@ -1355,7 +1355,7 @@ const lv_img_dsc_t spaceman_17 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_17_map,
 };
@@ -1368,7 +1368,7 @@ const lv_img_dsc_t spaceman_18 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_18_map,
 };
@@ -1381,7 +1381,7 @@ const lv_img_dsc_t spaceman_19 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = spaceman_19_map,
 };

@@ -46,7 +46,7 @@ const lv_img_dsc_t battery = {
     .header.w = 68,
     .header.h = 31,
     .header.stride = 68 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 287,
     .data = battery_map,
 };

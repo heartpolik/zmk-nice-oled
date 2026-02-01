@@ -966,7 +966,7 @@ const lv_img_dsc_t samurai_00 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_00_map,
 };
@@ -979,7 +979,7 @@ const lv_img_dsc_t samurai_01 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_01_map,
 };
@@ -992,7 +992,7 @@ const lv_img_dsc_t samurai_02 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_02_map,
 };
@@ -1005,7 +1005,7 @@ const lv_img_dsc_t samurai_03 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_03_map,
 };
@@ -1018,7 +1018,7 @@ const lv_img_dsc_t samurai_04 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_04_map,
 };
@@ -1031,7 +1031,7 @@ const lv_img_dsc_t samurai_05 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_05_map,
 };
@@ -1044,7 +1044,7 @@ const lv_img_dsc_t samurai_06 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_06_map,
 };
@@ -1057,7 +1057,7 @@ const lv_img_dsc_t samurai_07 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_07_map,
 };
@@ -1070,7 +1070,7 @@ const lv_img_dsc_t samurai_08 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_08_map,
 };
@@ -1083,7 +1083,7 @@ const lv_img_dsc_t samurai_09 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_09_map,
 };
@@ -1096,7 +1096,7 @@ const lv_img_dsc_t samurai_10 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_10_map,
 };
@@ -1109,7 +1109,7 @@ const lv_img_dsc_t samurai_11 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_11_map,
 };
@@ -1122,7 +1122,7 @@ const lv_img_dsc_t samurai_12 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_12_map,
 };
@@ -1135,7 +1135,7 @@ const lv_img_dsc_t samurai_13 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_13_map,
 };
@@ -1148,7 +1148,7 @@ const lv_img_dsc_t samurai_14 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_14_map,
 };
@@ -1161,7 +1161,7 @@ const lv_img_dsc_t samurai_15 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_15_map,
 };
@@ -1174,7 +1174,7 @@ const lv_img_dsc_t samurai_16 = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 620,
   .data = samurai_16_map,
 };

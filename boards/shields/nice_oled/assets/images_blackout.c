@@ -47,7 +47,7 @@ const lv_img_dsc_t grid_black = {
     .header.w = 67,
     .header.h = 33,
     .header.stride = 67 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 305,
     .data = grid_black_map,
 };
@@ -116,7 +116,7 @@ const lv_img_dsc_t crystal_black = {
     .header.w = 69,
     .header.h = 68,
     .header.stride = 69 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 620,
     .data = crystal_black_map,
 };

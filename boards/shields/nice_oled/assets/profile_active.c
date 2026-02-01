@@ -29,7 +29,7 @@ const lv_img_dsc_t profile_active = {
     .header.w = 12,
     .header.h = 12,
     .header.stride = 12 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
     .data_size = 32,
     .data = profile_active_map,
 };

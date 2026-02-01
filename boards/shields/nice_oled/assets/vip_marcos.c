@@ -102,7 +102,7 @@ const lv_img_dsc_t vip_marcos = {
     .header.w = 140,
     .header.h = 68,
     .header.stride = 140 * 3,
-    .header.reserved = 0,
+    .header.reserved_2 = 0,
   .data_size = 1232,
   .data = vip_marcos_map,
 };
