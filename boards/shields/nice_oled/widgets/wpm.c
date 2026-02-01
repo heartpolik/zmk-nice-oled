@@ -13,11 +13,17 @@ LV_IMG_DECLARE(grid);
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_BONGO_CAT) ||                                           \
     !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_SPEEDOMETER)
 #else
-static void draw_gauge(lv_obj_t *canvas, const struct status_state *state) {
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+static void draw_gauge(lv_layer_t *layer, const struct status_state *state) {
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
-    lv_canvas_draw_img(canvas, CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y, &gauge, &img_dsc);
+    lv_area_t coords = {
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X + gauge.header.w - 1,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y + gauge.header.h - 1
+    };
+    lv_draw_image(layer, &img_dsc, &coords);
 }
 
 static void draw_needle(lv_obj_t *canvas, const struct status_state *state) {
@@ -63,8 +69,8 @@ static void draw_needle(lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RAW_HID) || !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_GRAPH)
 #else
 static void draw_grid(lv_obj_t *canvas) {
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
     lv_canvas_draw_img(canvas, 0, 65, &grid, &img_dsc);
 }
@@ -157,11 +163,17 @@ static void draw_label(lv_obj_t *canvas, const struct status_state *state) {
 
 #else // CONFIG_NICE_EPAPER_ON
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_SPEEDOMETER)
-static void draw_gauge(lv_obj_t *canvas, const struct status_state *state) {
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+static void draw_gauge(lv_layer_t *layer, const struct status_state *state) {
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
-    lv_canvas_draw_img(canvas, CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y, &gauge, &img_dsc);
+    lv_area_t coords = {
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_X + gauge.header.w - 1,
+        CONFIG_NICE_OLED_WIDGET_WPM_GAUGE_CUSTOM_Y + gauge.header.h - 1
+    };
+    lv_draw_image(layer, &img_dsc, &coords);
 }
 
 static void draw_needle(lv_obj_t *canvas, const struct status_state *state) {
@@ -220,8 +232,8 @@ static void draw_needle(lv_obj_t *canvas, const struct status_state *state) {
     !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_GRAPH)
 #else
 static void draw_grid(lv_obj_t *canvas) {
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
     lv_canvas_draw_img(canvas, -1, 95, &grid, &img_dsc);
 }
@@ -298,7 +310,7 @@ static void draw_label(lv_obj_t *canvas, const struct status_state *state) {
 #endif // IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_NUMBER)
 #endif // CONFIG_NICE_EPAPER_ON
 
-void draw_wpm_status(lv_obj_t *canvas, const struct status_state *state) {
+void draw_wpm_status(lv_layer_t *layer, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_LUNA) ||                                                \
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM_BONGO_CAT) ||                                           \

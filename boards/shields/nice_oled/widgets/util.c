@@ -14,7 +14,7 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
 
   lv_img_dsc_t img;
   img.data = (void *)cbuf_tmp;
-  img.header.cf = LV_IMG_CF_TRUE_COLOR;
+  img.header.cf = LV_COLOR_FORMAT_NATIVE;
   img.header.w = CANVAS_HEIGHT;
   img.header.h = CANVAS_HEIGHT;
 
@@ -23,12 +23,12 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
                       CANVAS_HEIGHT / 2, CANVAS_HEIGHT / 2, false);
 }
 
-void draw_background(lv_obj_t *canvas) {
+void draw_background(lv_layer_t *layer) {
   lv_draw_rect_dsc_t rect_black_dsc;
   init_rect_dsc(&rect_black_dsc, LVGL_BACKGROUND);
 
-  lv_canvas_draw_rect(canvas, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT,
-                      &rect_black_dsc);
+  lv_area_t area = {0, 0, CANVAS_WIDTH - 1, CANVAS_HEIGHT - 1};
+  lv_draw_rect(layer, &rect_black_dsc, &area);
 }
 
 void init_label_dsc(lv_draw_label_dsc_t *label_dsc, lv_color_t color,

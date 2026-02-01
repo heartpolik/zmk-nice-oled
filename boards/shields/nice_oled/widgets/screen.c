@@ -60,7 +60,7 @@ struct battery_state {
  * Esta función toma el estado de la batería del central y del periférico
  * y lo muestra como una cadena de texto simple en las coordenadas especificadas.
  */
-static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state) {
+static void draw_battery_text(lv_layer_t *layer, lv_obj_t *canvas, const struct status_state *state) {
     // Un buffer de texto más grande para manejar múltiples baterías
     char text[32] = "";
     lv_draw_label_dsc_t label_dsc;
@@ -116,7 +116,8 @@ static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state
 #endif
 
     // Dibuja la cadena de texto final en la pantalla
-    lv_canvas_draw_text(canvas, 0, 19, lv_obj_get_width(canvas), &label_dsc, text);
+    lv_area_t coords = {0, 19, lv_obj_get_width(canvas) - 1, 19 + lv_font_get_line_height(label_dsc.font) - 1};
+    lv_draw_label(layer, &label_dsc, &coords);
 }
 /*
 static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state) {
@@ -289,8 +290,8 @@ static const lv_img_dsc_t *mod_imgs_active[4] = {&control_white_0, &shift_white_
 static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL)
     // --- MODO SÍMBOLOS (Imágenes reales) ---
-    lv_draw_img_dsc_t img_dsc;
-    lv_draw_img_dsc_init(&img_dsc);
+    lv_draw_image_dsc_t img_dsc;
+    lv_draw_image_dsc_init(&img_dsc);
 
     // Las imágenes son 14x14 píxeles
     const int img_size = 14;
@@ -857,38 +858,43 @@ static struct zmk_widget_hid_indicators hid_indicators_widget;
 static void draw_canvas(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, 0);
 
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+
     // Draw widgets
-    draw_background(canvas);
-    draw_output_status(canvas, state);
+    draw_background(&layer);
+    draw_output_status(&layer, state);
 #if !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ALL) &&                    \
     !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ONLY) &&                   \
     !IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_AND_CENTRAL)
-    draw_battery_status(canvas, state);
+    draw_battery_status(&layer, state);
 #endif
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ALL) ||                     \
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ONLY) ||                    \
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_AND_CENTRAL)
-    draw_battery_text(canvas, state);
+    draw_battery_text(&layer, canvas, state);
 #endif
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM)
-    draw_wpm_status(canvas, state);
+    draw_wpm_status(&layer, state);
 #endif // IS_ENABLED(CONFIG_NICE_OLED_WIDGET_WPM)
-    draw_profile_status(canvas, state);
+    draw_profile_status(&layer, state);
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_LAYER)
-    draw_layer_status(canvas, state);
+    draw_layer_status(&layer, state);
 #endif
 
 #ifdef CONFIG_NICE_OLED_WIDGET_RAW_HID
-    draw_hid_status(canvas, state);
+    draw_hid_status(&layer, state);
 
 #endif // CONFIG_NICE_OLED_WIDGET_RAW_HID
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED)
     // Dibuja los modificadores si la nueva Kconfig está habilitada
-    draw_mods_status(canvas, state);
+    draw_mods_status(&layer, state);
 #endif // <-- NUEVO
+
+    lv_canvas_finish_layer(canvas, &layer);
 
     // Rotate for horizontal display
     rotate_canvas(canvas, cbuf);
@@ -1115,7 +1121,7 @@ int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent) {
 
     lv_obj_t *canvas = lv_canvas_create(widget->obj);
     lv_obj_align(canvas, LV_ALIGN_TOP_LEFT, 0, 0);
-    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_HEIGHT, CANVAS_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_HEIGHT, CANVAS_HEIGHT, LV_COLOR_FORMAT_NATIVE);
 
     sys_slist_append(&widgets, &widget->node);
 

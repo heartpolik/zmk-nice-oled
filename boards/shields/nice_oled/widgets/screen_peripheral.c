@@ -46,10 +46,15 @@ static struct zmk_widget_luna luna_widget;
 static void draw_canvas(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, 0);
 
+    lv_layer_t layer;
+    lv_canvas_init_layer(canvas, &layer);
+
     // Draw widgets
-    draw_background(canvas);
-    draw_output_status(canvas, state);
-    draw_battery_status(canvas, state);
+    draw_background(&layer);
+    draw_output_status(&layer, canvas, state);
+    draw_battery_status(&layer, canvas, state);
+
+    lv_canvas_finish_layer(canvas, &layer);
 
     // Rotate for horizontal display
     rotate_canvas(canvas, cbuf);
@@ -144,7 +149,7 @@ int zmk_widget_screen_init(struct zmk_widget_screen *widget, lv_obj_t *parent) {
 
     lv_obj_t *canvas = lv_canvas_create(widget->obj);
     lv_obj_align(canvas, LV_ALIGN_TOP_LEFT, 0, 0);
-    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_HEIGHT, CANVAS_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_canvas_set_buffer(canvas, widget->cbuf, CANVAS_HEIGHT, CANVAS_HEIGHT, LV_COLOR_FORMAT_NATIVE);
 
     sys_slist_append(&widgets, &widget->node);
 
