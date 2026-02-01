@@ -120,7 +120,7 @@ static void draw_battery_text(lv_layer_t *layer, lv_obj_t *canvas, const struct 
     lv_draw_label(layer, &label_dsc, &coords);
 }
 /*
-static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state) {
+static void draw_battery_text(lv_layer_t *layer, lv_obj_t *canvas, const struct status_state *state) {
     lv_draw_label_dsc_t label_dsc;
 
     // Inicialización de la fuente y el estilo del texto
@@ -138,7 +138,8 @@ static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state
     char central_text[8];
     memset(central_text, 0, sizeof(central_text)); // Limpia el búfer
     snprintf(central_text, sizeof(central_text), "%d", state->batteries[0].level);
-    lv_canvas_draw_text(canvas, 0, 1, 25, &label_dsc, central_text);
+    lv_area_t central_area = {0, 1, 24, 1 + lv_font_get_line_height(label_dsc.font) - 1};
+    lv_draw_label(layer, &label_dsc, &central_area, central_text, NULL);
 
     //  Baterías Periféricas
     char peripheral_text[32];
@@ -155,7 +156,8 @@ static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state
     if (p > peripheral_text) {
         *(p - 1) = '\0'; // Elimina el último espacio
     }
-    lv_canvas_draw_text(canvas, 0, 19, lv_obj_get_width(canvas), &label_dsc, peripheral_text);
+    lv_area_t peripheral_area = {0, 19, lv_obj_get_width(canvas) - 1, 19 + lv_font_get_line_height(label_dsc.font) - 1};
+    lv_draw_label(layer, &label_dsc, &peripheral_area, peripheral_text, NULL);
 
 #else
     // MODO 2 y 3 (el resto de los casos)
@@ -185,7 +187,8 @@ static void draw_battery_text(lv_obj_t *canvas, const struct status_state *state
 #endif
 
     // Dibuja la cadena de texto final para los modos 2 y 3
-    lv_canvas_draw_text(canvas, 0, 19, lv_obj_get_width(canvas), &label_dsc, text);
+    lv_area_t text_area = {0, 19, lv_obj_get_width(canvas) - 1, 19 + lv_font_get_line_height(label_dsc.font) - 1};
+    lv_draw_label(layer, &label_dsc, &text_area, text, NULL);
 #endif
 }
 */
@@ -287,7 +290,7 @@ static const lv_img_dsc_t *mod_imgs_active[4] = {&control_white_0, &shift_white_
 #endif // CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL
 
 // Función de dibujo para los modificadores
-static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state) {
+static void draw_mods_status(lv_layer_t *layer, lv_obj_t *canvas, const struct status_state *state) {
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL)
     // --- MODO SÍMBOLOS (Imágenes reales) ---
     lv_draw_image_dsc_t img_dsc;
@@ -322,7 +325,8 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x;
         int current_y = base_y + i * (img_size + spacing);
         const lv_img_dsc_t *img = selected ? mod_imgs_active[i] : mod_imgs_normal[i];
-        lv_canvas_draw_img(canvas, current_x, current_y, img, &img_dsc);
+        lv_area_t img_coords = {current_x, current_y, current_x + img->header.w - 1, current_y + img->header.h - 1};
+        lv_draw_image(layer, &img_dsc, &img_coords);
     }
 
 #elif IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_HOR)
@@ -335,7 +339,8 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + i * (img_size + spacing);
         int current_y = base_y;
         const lv_img_dsc_t *img = selected ? mod_imgs_active[i] : mod_imgs_normal[i];
-        lv_canvas_draw_img(canvas, current_x, current_y, img, &img_dsc);
+        lv_area_t img_coords = {current_x, current_y, current_x + img->header.w - 1, current_y + img->header.h - 1};
+        lv_draw_image(layer, &img_dsc, &img_coords);
     }
 
 #elif IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_BOX)
@@ -355,7 +360,8 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + offsets_box[i][0];
         int current_y = base_y + offsets_box[i][1];
         const lv_img_dsc_t *img = selected ? mod_imgs_active[i] : mod_imgs_normal[i];
-        lv_canvas_draw_img(canvas, current_x, current_y, img, &img_dsc);
+        lv_area_t img_coords = {current_x, current_y, current_x + img->header.w - 1, current_y + img->header.h - 1};
+        lv_draw_image(layer, &img_dsc, &img_coords);
     }
 
 #else
@@ -375,7 +381,8 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + offsets_default[i][0];
         int current_y = base_y + offsets_default[i][1];
         const lv_img_dsc_t *img = selected ? mod_imgs_active[i] : mod_imgs_normal[i];
-        lv_canvas_draw_img(canvas, current_x, current_y, img, &img_dsc);
+        lv_area_t img_coords = {current_x, current_y, current_x + img->header.w - 1, current_y + img->header.h - 1};
+        lv_draw_image(layer, &img_dsc, &img_coords);
     }
 #endif
 
@@ -426,14 +433,17 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x;
         int current_y = base_y + i * (box_height + 2);
 
-        lv_canvas_draw_rect(canvas, current_x, current_y, box_width, box_height, &rect_black_dsc);
+        lv_area_t rect_area = {current_x, current_y, current_x + box_width - 1, current_y + box_height - 1};
+        lv_draw_rect(layer, &rect_black_dsc, &rect_area);
         if (selected && inner_box_width > 0 && inner_box_height > 0) {
-            lv_canvas_draw_rect(canvas, current_x + inner_box_offset,
-                                current_y + inner_box_offset, inner_box_width, inner_box_height,
-                                &rect_white_dsc);
+            lv_area_t inner_rect_area = {current_x + inner_box_offset, current_y + inner_box_offset,
+                                         current_x + inner_box_offset + inner_box_width - 1,
+                                         current_y + inner_box_offset + inner_box_height - 1};
+            lv_draw_rect(layer, &rect_white_dsc, &inner_rect_area);
         }
-        lv_canvas_draw_text(canvas, current_x, current_y + text_offset_y, box_width,
-                            (selected ? &mod_dsc_black : &mod_dsc), items[i]);
+        lv_area_t text_area = {current_x, current_y + text_offset_y, current_x + box_width - 1,
+                               current_y + text_offset_y + lv_font_get_line_height((selected ? &mod_dsc_black : &mod_dsc)->font) - 1};
+        lv_draw_label(layer, (selected ? &mod_dsc_black : &mod_dsc), &text_area);
     }
 
 #elif IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_HOR)
@@ -446,14 +456,17 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + i * (box_width + 2);
         int current_y = base_y;
 
-        lv_canvas_draw_rect(canvas, current_x, current_y, box_width, box_height, &rect_black_dsc);
+        lv_area_t rect_area = {current_x, current_y, current_x + box_width - 1, current_y + box_height - 1};
+        lv_draw_rect(layer, &rect_black_dsc, &rect_area);
         if (selected && inner_box_width > 0 && inner_box_height > 0) {
-            lv_canvas_draw_rect(canvas, current_x + inner_box_offset,
-                                current_y + inner_box_offset, inner_box_width, inner_box_height,
-                                &rect_white_dsc);
+            lv_area_t inner_rect_area = {current_x + inner_box_offset, current_y + inner_box_offset,
+                                         current_x + inner_box_offset + inner_box_width - 1,
+                                         current_y + inner_box_offset + inner_box_height - 1};
+            lv_draw_rect(layer, &rect_white_dsc, &inner_rect_area);
         }
-        lv_canvas_draw_text(canvas, current_x, current_y + text_offset_y, box_width,
-                            (selected ? &mod_dsc_black : &mod_dsc), items[i]);
+        lv_area_t text_area = {current_x, current_y + text_offset_y, current_x + box_width - 1,
+                               current_y + text_offset_y + lv_font_get_line_height((selected ? &mod_dsc_black : &mod_dsc)->font) - 1};
+        lv_draw_label(layer, (selected ? &mod_dsc_black : &mod_dsc), &text_area);
     }
 
 #elif IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_BOX)
@@ -470,14 +483,17 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + offsets_box[i][0];
         int current_y = base_y + offsets_box[i][1];
 
-        lv_canvas_draw_rect(canvas, current_x, current_y, box_width, box_height, &rect_black_dsc);
+        lv_area_t rect_area = {current_x, current_y, current_x + box_width - 1, current_y + box_height - 1};
+        lv_draw_rect(layer, &rect_black_dsc, &rect_area);
         if (selected && inner_box_width > 0 && inner_box_height > 0) {
-            lv_canvas_draw_rect(canvas, current_x + inner_box_offset,
-                                current_y + inner_box_offset, inner_box_width, inner_box_height,
-                                &rect_white_dsc);
+            lv_area_t inner_rect_area = {current_x + inner_box_offset, current_y + inner_box_offset,
+                                         current_x + inner_box_offset + inner_box_width - 1,
+                                         current_y + inner_box_offset + inner_box_height - 1};
+            lv_draw_rect(layer, &rect_white_dsc, &inner_rect_area);
         }
-        lv_canvas_draw_text(canvas, current_x, current_y + text_offset_y, box_width,
-                            (selected ? &mod_dsc_black : &mod_dsc), items[i]);
+        lv_area_t text_area = {current_x, current_y + text_offset_y, current_x + box_width - 1,
+                               current_y + text_offset_y + lv_font_get_line_height((selected ? &mod_dsc_black : &mod_dsc)->font) - 1};
+        lv_draw_label(layer, (selected ? &mod_dsc_black : &mod_dsc), &text_area);
     }
 
 #else
@@ -494,14 +510,14 @@ static void draw_mods_status(lv_obj_t *canvas, const struct status_state *state)
         int current_x = base_x + offsets_default[i][0];
         int current_y = base_y + offsets_default[i][1];
 
-        lv_canvas_draw_rect(canvas, current_x, current_y, box_width, box_height, &rect_black_dsc);
+        lv_area_t rect_area = {current_x, current_y, current_x + box_width - 1, current_y + box_height - 1};
+        lv_draw_rect(layer, &rect_black_dsc, &rect_area);
         if (selected && inner_box_width > 0 && inner_box_height > 0) {
-            lv_canvas_draw_rect(canvas, current_x + inner_box_offset,
-                                current_y + inner_box_offset, inner_box_width, inner_box_height,
-                                &rect_white_dsc);
+            lv_area_t inner_rect_area = {current_x + inner_box_offset, current_y + inner_box_offset, current_x + inner_box_offset + inner_box_width - 1, current_y + inner_box_offset + inner_box_height - 1};
+            lv_draw_rect(layer, &rect_white_dsc, &inner_rect_area);
         }
-        lv_canvas_draw_text(canvas, current_x, current_y + text_offset_y, box_width,
-                            (selected ? &mod_dsc_black : &mod_dsc), items[i]);
+        lv_area_t text_area = {current_x, current_y + text_offset_y, current_x + box_width - 1, current_y + text_offset_y + lv_font_get_line_height((selected ? mod_dsc_black : mod_dsc).font) - 1};
+        lv_draw_label(layer, (selected ? &mod_dsc_black : &mod_dsc), &text_area, items[i], NULL);
     }
 #endif
 #endif // CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL
@@ -558,7 +574,7 @@ ZMK_SUBSCRIPTION(widget_mods_status, zmk_keycode_state_changed);
 
 // Función para dibujar el estado de Raw HID en el canvas principal
 
-static void draw_hid_status(lv_obj_t *canvas, const struct status_state *state) {
+static void draw_hid_status(lv_layer_t *layer, lv_obj_t *canvas, const struct status_state *state) {
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_SYMBOL_VERTICAL) ||              \
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_MODIFIERS_INDICATORS_FIXED_ONE_LINE_VERTICAL)
@@ -615,17 +631,21 @@ static void draw_hid_status(lv_obj_t *canvas, const struct status_state *state) 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER)
         // Dibujar Temperatura
         sprintf(text_buffer, "%dC", state->temperature);
-        lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_X,
-                            CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_Y,
-                            hid_area_width, &label_volume, text_buffer);
+        lv_area_t weather_coords = {CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_X,
+                                    CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_Y,
+                                    CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_X + hid_area_width - 1,
+                                    CONFIG_NICE_OLED_WIDGET_RAW_HID_WEATHER_CUSTOM_Y + lv_font_get_line_height(label_volume.font) - 1};
+        lv_draw_label(layer, &label_volume, &weather_coords);
 #endif
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME)
         //  Dibujar Hora
         sprintf(text_buffer, "%02i:%02i", state->hour, state->minute);
-        lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_X,
-                            CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_Y,
-                            hid_area_width, &label_time, text_buffer);
+        lv_area_t time_coords = {CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_X,
+                                 CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_Y,
+                                 CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_X + hid_area_width - 1,
+                                 CONFIG_NICE_OLED_WIDGET_RAW_HID_TIME_CUSTOM_Y + lv_font_get_line_height(label_time.font) - 1};
+        lv_draw_label(layer, &label_time, &time_coords);
 #endif
 
         //  Dibujar Layout (condicional)
@@ -648,9 +668,11 @@ static void draw_hid_status(lv_obj_t *canvas, const struct status_state *state) 
 #else
         snprintf(layout_str, sizeof(layout_str), "L%i", state->layout);
 #endif
-        lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_X,
-                            CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_Y,
-                            hid_area_width, &label_layout, layout_str);
+        lv_area_t layout_coords = {CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_X,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_Y,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_X + hid_area_width - 1,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT_CUSTOM_Y + lv_font_get_line_height(label_layout.font) - 1};
+        lv_draw_label(layer, &label_layout, &layout_coords);
 #endif // CONFIG_NICE_OLED_WIDGET_RAW_HID_LAYOUT
 
         //  Dibujar Volumen
@@ -660,16 +682,20 @@ static void draw_hid_status(lv_obj_t *canvas, const struct status_state *state) 
 #else
         sprintf(text_buffer, "V:%i", state->volume);
 #endif // IS_ENABLED(CONFIG_NICE_EPAPER_ON)
-        lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_X,
-                            CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_Y,
-                            hid_area_width, &label_volume, text_buffer);
+        lv_area_t volume_coords = {CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_X,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_Y,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_X + hid_area_width - 1,
+                                   CONFIG_NICE_OLED_WIDGET_RAW_HID_VOLUME_CUSTOM_Y + lv_font_get_line_height(label_volume.font) - 1};
+        lv_draw_label(layer, &label_volume, &volume_coords);
 #endif
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_SPOTIFY_MACOS)
         // Dibujar Spotify/Media Player
-        lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_X,
-                            CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_Y,
-                            hid_area_width, &label_volume, state->media_player);
+        lv_area_t media_coords = {CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_X,
+                                  CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_Y,
+                                  CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_X + hid_area_width - 1,
+                                  CONFIG_NICE_OLED_WIDGET_RAW_HID_MEDIA_PLAYER_CUSTOM_Y + lv_font_get_line_height(label_volume.font) - 1};
+        lv_draw_label(layer, &label_volume, &media_coords);
 #endif
 
     } else {
@@ -678,19 +704,22 @@ static void draw_hid_status(lv_obj_t *canvas, const struct status_state *state) 
         // Dibujar "HID"
         lv_txt_get_size(&text_size, "HID", label_time.font, label_time.letter_space,
                         label_time.line_space, LV_COORD_MAX, LV_TEXT_FLAG_NONE);
-        lv_canvas_draw_text(canvas, hid_area_x, current_y, hid_area_width, &label_time, "HID");
+        lv_area_t hid_coords = {hid_area_x, current_y, hid_area_x + hid_area_width - 1, current_y + lv_font_get_line_height(label_time.font) - 1};
+        lv_draw_label(layer, &label_time, &hid_coords);
         current_y += text_size.y + line_gap;
 
         // Dibujar "not"
         lv_txt_get_size(&text_size, "not", label_layout.font, label_layout.letter_space,
                         label_layout.line_space, LV_COORD_MAX, LV_TEXT_FLAG_NONE);
-        lv_canvas_draw_text(canvas, hid_area_x, current_y, hid_area_width, &label_layout, "not");
+        lv_area_t not_coords = {hid_area_x, current_y, hid_area_x + hid_area_width - 1, current_y + lv_font_get_line_height(label_layout.font) - 1};
+        lv_draw_label(layer, &label_layout, &not_coords);
         current_y += text_size.y + line_gap;
 
         // Dibujar "found"
         lv_txt_get_size(&text_size, "found", label_volume.font, label_volume.letter_space,
                         label_volume.line_space, LV_COORD_MAX, LV_TEXT_FLAG_NONE);
-        lv_canvas_draw_text(canvas, hid_area_x, current_y, hid_area_width, &label_volume, "found");
+        lv_area_t found_coords = {hid_area_x, current_y, hid_area_x + hid_area_width - 1, current_y + lv_font_get_line_height(label_volume.font) - 1};
+        lv_draw_label(layer, &label_volume, &found_coords);
     }
 }
 
